@@ -1,0 +1,57 @@
+﻿
+<h1>Welcome ITI</h1>
+
+C# - Html --> Render --> Html - Css - Js
+
+<div id="title">Hello</div>
+
+<style>
+	#title {
+		color: #ccc;
+		font-size: 30px;
+		font-weight: bold;
+	}
+</style>
+
+<script>
+	console.log("hello from CSharp");
+</script>
+
+@* Razor Engine --> View Engine *@
+@* Razor Syntax *@
+
+@{
+	// Block Of Code
+	int x = 5;
+	int y = 10;
+}
+
+@* Inline Expression --- Display *@ 
+@x 
+<h1>@y</h1>
+
+@if(x > y)
+{
+	<h2>x = @x Greater Than y = @y</h2>
+}
+else
+{
+	<h2>x = @x Less Than y = @y</h2>
+}
+
+@for(int i = 0; i < 10; i++)
+{
+	<li>@i</li>
+	// <span>@i</span>
+}
+
+@{
+	int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+}
+@foreach(var number in numbers)
+{
+	if(number % 2 == 0)
+	{
+		<span>@number</span>
+	}
+}
