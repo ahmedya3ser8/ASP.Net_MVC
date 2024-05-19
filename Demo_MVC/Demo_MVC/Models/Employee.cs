@@ -9,9 +9,8 @@ namespace Demo_MVC.Models
 		public decimal Price { get; set; }
 		public string Address { get; set; }
 		public string Image { get; set; }
-
 		//[ForeignKey("Department")]
-		public int Dept_Id { get; set; }
+		public int? Dept_Id { get; set; }
 		public virtual Department? Department { get; set; }
 	}
 }

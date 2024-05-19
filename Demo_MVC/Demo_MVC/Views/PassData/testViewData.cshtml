@@ -1,0 +1,34 @@
+﻿@model Employee
+
+@{
+    ViewData["Title"] = "testViewData";
+}
+
+@* Using ViewData *@
+
+@* <h1>testViewData</h1>
+<h2>Name: @Model.Name</h2>
+<h3 style="color:@ViewData["color"]">@ViewData["Message"]</h3>
+<select class="form-control">
+    @foreach(var item in (List<string>)ViewData["branches"])
+    {
+        <option>@item</option>
+    }
+</select>
+<p>temp: @ViewData["temp"]</p> *@
+
+
+<h1>testViewData</h1>
+
+<h2>Name: @Model.Name</h2>
+
+<h3 style="color:@ViewBag.color">@ViewBag.Message</h3>
+
+<select class="form-control">
+    @foreach(var item in ViewBag.branches)
+    {
+        <option>@item</option>
+    }
+</select>
+
+<p>temp: @ViewBag.temp</p>

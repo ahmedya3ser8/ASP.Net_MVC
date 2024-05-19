@@ -1,0 +1,28 @@
+﻿@model TraineeWithCourseViewModel
+
+@{
+	if(Model.Degree > Model.MinDegree)
+	{
+		<p style="color:green">traineeId: @Model.TraineeId</p>
+
+		<h1 style="color:green">TraineeName: @Model.TraineeName</h1>
+
+		<h2 style="color:green">CousreName: @Model.CousreName</h2>
+
+		<h4 style="color:green">MinDegree: @Model.MinDegree</h4>
+
+		<h4 style="color:green">Degree: @Model.Degree</h4>
+	}
+	else
+	{
+		<p style="color:red">traineeId: @Model.TraineeId</p>
+
+		<h1 style="color:red">TraineeName: @Model.TraineeName</h1>
+
+		<h2 style="color:red">CousreName: @Model.CousreName</h2>
+
+		<h4 style="color:red">MinDegree: @Model.MinDegree</h4>
+
+		<h4 style="color:red">Degree: @Model.Degree</h4>
+	}
+}
