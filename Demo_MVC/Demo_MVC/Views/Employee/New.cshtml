@@ -1,0 +1,51 @@
+﻿@model Employee
+@{
+	SelectList deptList = new SelectList(ViewBag.deptList, "Id", "Name");
+}
+
+<h2>New Employee</h2>
+
+<form asp-action="SaveNew" asp-controller="Employee">
+	@* 
+		<div asp-validation-summary="All"></div>
+		<div asp-validation-summary="None"></div>
+		<div asp-validation-summary="ModelOnly"></div>
+		ModelState.AddModelError(string.Empty, errorMessage)
+			Key the Same of property in model --> show in "span"
+			Key the Name Not Exist in model --> show in "div"
+	*@
+	<div>
+		<label asp-for="Name"></label>
+		<input class="form-control" asp-for="Name" />
+		<span asp-validation-for="Name" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Price"></label>
+		<input class="form-control" asp-for="Price" type="number" />
+		<span asp-validation-for="Price" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Address"></label>
+		<input class="form-control" asp-for="Address" />
+		<span asp-validation-for="Address" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Image"></label>
+		<input class="form-control" asp-for="Image" />
+		<span asp-validation-for="Image" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Dept_Id"></label>
+		@* <input class="form-control" asp-for="Dept_Id" /> *@
+		<select class="form-control" asp-for="Dept_Id" asp-items="deptList">
+			<option value="0">Select Department</option>
+		</select>
+		<span asp-validation-for="Dept_Id" class="text-danger"></span>
+	</div>
+	<input type="submit" value="add" />
+</form>
+
+@section Scripts{
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -72,6 +72,21 @@ app.UseAuthorization();
 
 app.UseSession();
 
+/*
+ * {controller=Home}/{action=Index}/{id?}
+ *      segment     delemeter        placeholder
+*/
+
+// URL --> emp/1  == Employee/Details/1
+app.MapControllerRoute("Route1",
+    "emp/{id:int}",
+    new
+    {
+        controller = "Employee",
+        action = "Details"
+    }
+);
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

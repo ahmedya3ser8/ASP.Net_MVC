@@ -1,0 +1,35 @@
+﻿@model List<Employee>
+
+<h1>Index</h1>
+
+<a asp-action="New" asp-controller="Employee">New</a>
+
+<div style="border:3px solid blue" id="EmployeeDetails">
+
+</div>
+
+<table class="table table-borderd table-hover">
+	@foreach(var item in Model)
+	{
+		<tr>
+			@* <td>@item.Name</td> *@
+			@* <td><partial name="_EmployeeCardPartial" model="item">@item.Name</partial></td> *@
+			<td><a href="#" onclick="GetData(@item.Id)">@item.Name</a></td>
+			@* <td><a href="/Employee/Edit/@item.Id">Edit</a></td> *@
+			<td><a asp-action="Edit" asp-controller="Employee" asp-route-id="@item.Id">Edit</a></td>
+		</tr>
+	}
+</table>
+@section Scripts{
+	<script src="/lib/jquery/dist/jquery.min.js"></script>
+	<script>
+		function GetData(id) {
+			event.preventDefault();
+			$.get("/Employee/DetailsUsingPartial/" + id,
+				function (data, status) {
+					console.log("Data: " + data + "\nStatus: " + status);
+					document.getElementById("EmployeeDetails").innerHTML = data;
+				});
+		}
+	</script>
+}
