@@ -13,8 +13,13 @@ namespace Demo_MVC.Controllers
 			* ViewBag   --> not recommended
 			* ViewModel --> the best way
 		*/
-		AppDbContext dbContext = new AppDbContext();
-		public IActionResult testViewData(int id)
+		private readonly AppDbContext dbContext;
+        public PassDataController(AppDbContext dbContext)
+        {
+			this.dbContext = dbContext;
+		}
+
+        public IActionResult testViewData(int id)
 		{
 			Employee employeeModel = dbContext.Employees.FirstOrDefault(e => e.Id == id);
 

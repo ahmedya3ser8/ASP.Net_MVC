@@ -1,16 +1,24 @@
 ﻿using Demo_MVC.Models;
 using Demo_MVC.Repository;
 using Demo_MVC.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo_MVC.Controllers
 {
 	public class EmployeeController : Controller
 	{
-		IEmployeeRepository employeeRepository = new EmployeeRepository();
-		IDepartmentRepository departmentRepository = new DepartmentRepository();
+		IEmployeeRepository employeeRepository;
+		IDepartmentRepository departmentRepository;
 
-		[HttpGet]
+        public EmployeeController(IEmployeeRepository empRepository, IDepartmentRepository deptRepository)
+        {
+			employeeRepository = empRepository;
+			departmentRepository = deptRepository;
+		}
+
+        [HttpGet]
+		[Authorize]
 		public IActionResult Index()
 		{
 			return View(employeeRepository.GetAll());
@@ -46,19 +54,15 @@ namespace Demo_MVC.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult SaveEdit(int id, Employee newEmp)
+		public IActionResult SaveEdit(int id, Employee newEmployee)
 		{
 			if(ModelState.IsValid)
 			{
-				Employee oldEmp = employeeRepository.GetById(id);
-				if (oldEmp != null)
-				{
-					employeeRepository.Update(id, newEmp);
-					return RedirectToAction("Index");
-				}
+				employeeRepository.Update(id, newEmployee);
+				return RedirectToAction("Index");
 			}
 			ViewBag.deptList = departmentRepository.GetAll();
-			return View("Edit", newEmp);
+			return View("Edit", newEmployee);
 		}
 
 		public IActionResult CheckSalary(decimal Price)

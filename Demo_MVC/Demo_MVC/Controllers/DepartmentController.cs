@@ -6,8 +6,14 @@ namespace Demo_MVC.Controllers
 {
 	public class DepartmentController : Controller
 	{
-		IEmployeeRepository employeeRepository = new EmployeeRepository();
-		IDepartmentRepository departmentRepository = new DepartmentRepository();
+		IEmployeeRepository employeeRepository;
+		IDepartmentRepository departmentRepository; 
+
+		public DepartmentController(IEmployeeRepository empRepository, IDepartmentRepository deptRepository)
+		{
+			employeeRepository = empRepository;
+			departmentRepository = deptRepository;
+		}
 
 		[HttpGet]
 		public IActionResult Index()

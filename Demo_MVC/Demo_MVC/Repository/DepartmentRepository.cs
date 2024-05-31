@@ -4,8 +4,13 @@ namespace Demo_MVC.Repository
 {
 	public class DepartmentRepository : IDepartmentRepository
 	{
-		AppDbContext _context = new AppDbContext();
-		public List<Department> GetAll()
+		AppDbContext _context;
+
+		public DepartmentRepository(AppDbContext dbContext)
+        {
+			_context = dbContext;
+		}
+        public List<Department> GetAll()
 		{
 			return _context.Departments.ToList();
 		}
@@ -23,7 +28,6 @@ namespace Demo_MVC.Repository
 			Department oldEmployee = GetById(id);
 			oldEmployee.Name = newDepartment.Name;
 			oldEmployee.ManagerName = newDepartment.ManagerName;
-			_context.Departments.Update(newDepartment);
 			_context.SaveChanges();
 		}
 		public void Delete(int id)

@@ -262,3 +262,8 @@ F:\Learning\ASP.Net_MVC\Demo_MVC\Demo_MVC\bin\Debug\net8.0\runtimes\win\lib\net7
 F:\Learning\ASP.Net_MVC\Demo_MVC\Demo_MVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
 F:\Learning\ASP.Net_MVC\Demo_MVC\Demo_MVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Security.Cryptography.ProtectedData.dll
 F:\Learning\ASP.Net_MVC\Demo_MVC\Demo_MVC\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Windows.Extensions.dll
+F:\Learning\ASP.Net_MVC\Demo_MVC\Demo_MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+F:\Learning\ASP.Net_MVC\Demo_MVC\Demo_MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+F:\Learning\ASP.Net_MVC\Demo_MVC\Demo_MVC\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+F:\Learning\ASP.Net_MVC\Demo_MVC\Demo_MVC\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+F:\Learning\ASP.Net_MVC\Demo_MVC\Demo_MVC\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll

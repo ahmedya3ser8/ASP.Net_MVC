@@ -4,7 +4,11 @@ namespace Demo_MVC.Repository
 {
 	public class EmployeeRepository : IEmployeeRepository
 	{
-		AppDbContext _context = new AppDbContext();
+		AppDbContext _context;
+		public EmployeeRepository(AppDbContext dbContext)
+		{
+			_context = dbContext;
+		}
 		public List<Employee> GetAll()
 		{
 			return _context.Employees.ToList();
@@ -25,13 +29,16 @@ namespace Demo_MVC.Repository
 		public void Update(int id, Employee newEmployee)
 		{
 			Employee oldEmployee = GetById(id);
-			oldEmployee.Name = newEmployee.Name;
-			oldEmployee.Price = newEmployee.Price;
-			oldEmployee.Address = newEmployee.Address;
-			oldEmployee.Image = newEmployee.Image;
-			oldEmployee.Dept_Id = newEmployee.Dept_Id;
-			_context.Employees.Update(newEmployee);
-			_context.SaveChanges();
+			if (oldEmployee != null)
+			{
+				oldEmployee.Name = newEmployee.Name;
+				oldEmployee.Price = newEmployee.Price;
+				oldEmployee.Address = newEmployee.Address;
+				oldEmployee.Image = newEmployee.Image;
+				oldEmployee.Dept_Id = newEmployee.Dept_Id;
+				_context.Employees.Update(oldEmployee);
+				_context.SaveChanges();
+			}
 		}
 		public void Delete(int id)
 		{

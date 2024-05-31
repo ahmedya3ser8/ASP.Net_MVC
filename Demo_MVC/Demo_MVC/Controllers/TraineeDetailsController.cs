@@ -13,8 +13,12 @@ namespace Demo_MVC.Controllers
          * Result --> TraineeId, TraineeName, CourseName, MinDegree, Degree
         */
 
-		AppDbContext dbContext = new AppDbContext();
-        public IActionResult Details(int id)
+		private readonly AppDbContext dbContext;
+		public TraineeDetailsController(AppDbContext dbContext)
+		{
+			this.dbContext = dbContext;
+		}
+		public IActionResult Details(int id)
         {
             /*
             var result = from c in dbContext.Courses
